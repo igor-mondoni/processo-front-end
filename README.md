@@ -14,7 +14,8 @@
 
 <p/>
 <p>Abra o console após fazer o clone e execute os seguintes comandos:</p>
-
+<p>git clone https://github.com/igor-mondoni/processo-front-end.git</p>
+<p>cd processo-front-end</p>
 <p>npm install</p>
 <p>npx http-server -p 8080</p>
 

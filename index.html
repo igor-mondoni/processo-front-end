@@ -2,49 +2,36 @@
 <html lang="pt-br">
 
 <head>
-    <title>Bootstrap Example</title>
+    <title>Cadastro pessoas</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.6.0/dt-1.11.2/datatables.min.css" />
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
 
+
     <style>
-        /* Remove the navbar's default margin-bottom and rounded borders */
-        .navbar {
-            margin-bottom: 0;
-            border-radius: 0;
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
         }
 
-        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-        .row.content {
-            height: 450px
+        #open-register-modal {
+            width: 200px;
         }
 
-        /* Set gray background color and 100% height */
-        .sidenav {
-            padding-top: 20px;
-            background-color: #f1f1f1;
-            height: 100%;
+        .div-modal-input {
+            margin: 25px;
+            padding: 20px;
         }
 
-        /* Set black background color, white text and some padding */
         footer {
             background-color: #555;
             color: white;
             padding: 15px;
-        }
-
-        /* On small screens, set height to 'auto' for sidenav and grid */
-        @media screen and (max-width: 767px) {
-            .sidenav {
-                height: auto;
-                padding: 15px;
-            }
-
-            .row.content {
-                height: auto;
-            }
         }
     </style>
 </head>
@@ -54,96 +41,102 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Logo</a>
+                <a class="navbar-brand" href="#">
+                    Bem vindo!
+                </a>
             </div>
         </div>
     </nav>
     <section>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Cadastrar</button>
-        <div>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">E-mail</th>
-                        <th scope="col">Telefone</th>
-                        <th scope="col">Nacionalidade</th>
-                        <th scope="col">CEP</th>
-                        <th scope="col">Cidade</th>
-                        <th scope="col">Logradouro</th>
-                        <th scope="col">CPF</th>
-                        <th scope="col">Cadastrado dia</th>
-                        <th scope="col">Ações</th>
-                    </tr>
-                </thead>
-                <tbody id="tbody-table">
+            <button type="button" id="open-register-modal" class="btn btn-primary" data-toggle="modal"
+                data-target=".bd-pessoas-modal-lg">Cadastrar</button>
+            <div>
+                <table id="payload-data" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">Nacionalidade</th>
+                            <th scope="col">CEP</th>
+                            <th scope="col">Cidade</th>
+                            <th scope="col">Logradouro</th>
+                            <th scope="col">CPF</th>
+                            <th scope="col">Cadastrado dia</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-table">
 
-                </tbody>
-            </table>
-        </div>
-        
+                    </tbody>
+                </table>
+            </div>
 
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        <div class="modal fade bd-pessoas-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-lg form-input-people-div-modal">
                 <div class="modal-content">
-                    <form method="POST" id="people-form">
-                        <input type="hidden" name="id">
-                        <div class="form-row">
-                            <div class="form-group col-md-3">
-                                <label for="name">Nome</label>
-                                <input type="text" class="form-control" value="" id="name">
+                    <div class="div-modal-input">
+
+                        <form method="POST" id="people-form">
+                            <input type="hidden" name="id" id="id">
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label for="name">Nome</label>
+                                    <input type="text" class="form-control" value="" id="name" required>
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="surname">Sobrenome</label>
+                                    <input type="text" class="form-control" value="" id="surname" required>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="email">E-mail</label>
+                                    <input type="email" class="form-control" value="" id="email" required>
+                                </div>
                             </div>
 
-                            <div class="form-group col-md-3">
-                                <label for="surname">Sobrenome</label>
-                                <input type="text" class="form-control" value="" id="surname">
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label for="zip_code">CEP</label>
+                                    <input type="text" class="form-control" value="" id="zip_code" minlength="8"
+                                        maxlength="8" required>
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="state">Estado</label>
+                                    <input type="text" class="form-control" value="" id="state" required>
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="city">Cidade</label>
+                                    <input type="text" class="form-control" value="" id="city" required>
+                                </div>
+
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <label for="email">E-mail</label>
-                                <input type="email" class="form-control" value="" id="email">
+                            <div class="form-row">
+                                <div class="form-group col-md-5">
+                                    <label for="street">Logradouro</label>
+                                    <input type="text" class="form-control" value="" id="street" required>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="doc_number">CPF</label>
+                                    <input type="text" class="form-control" value="" id="doc_number" required>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="cellphone">Telefone/Celular</label>
+                                    <input type="text" class="form-control" value="" id="cellphone" required>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="nationality">Nacionalidade</label>
+                                    <input type="text" class="form-control" value="" id="nationality" required>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-3">
-                                <label for="zip_code">CEP</label>
-                                <input type="text" class="form-control" onkeypress="$(this).mask('00.000-000')" value="" id="zip_code">
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="state">Estado</label>
-                                <input type="text" class="form-control" value="" id="state">
-                            </div>
-                            <div class="form-group col-md-5">
-                                <label for="city">Cidade</label>
-                                <input type="text" class="form-control" value="" id="city">
-                            </div>
-                            
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-5">
-                                <label for="street">Logradouro</label>
-                                <input type="text" class="form-control" value="" id="street">
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="doc_number">CPF</label>
-                                <input type="text" class="form-control" value="" id="doc_number">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="cellphone">Telefone/Celular</label>
-                                <input type="text" class="form-control" value="" id="cellphone">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="nationality">Nacionalidade</label>
-                                <input type="text" class="form-control" value="" id="nationality">
-                            </div>    
-                        </div>
-                        <button type="submit"class="btn btn-primary">Cadastrar</button>
-                        <button type="reset" class="btn btn-secondary">Limpar</button>
-                    </form>
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                            <button type="reset" class="btn btn-secondary">Limpar</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -151,6 +144,8 @@
     <footer class="container-fluid text-center">
     </footer>
 </body>
+<script type="text/javascript"
+    src="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.6.0/dt-1.11.2/datatables.min.js"></script>
 <script src="assets/js/index.js"></script>
 
 </html>

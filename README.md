@@ -14,9 +14,14 @@
 
 <p/>
 <p>Abra o console após fazer o clone e execute os seguintes comandos:</p>
-<p>git clone https://github.com/igor-mondoni/processo-front-end.git</p>
-<p>cd processo-front-end</p>
-<p>npm install</p>
-<p>npx http-server -p 8080</p>
+###git clone https://github.com/igor-mondoni/processo-front-end.git
+###cd processo-front-end
+###npm install
+###npx http-server -p 8080
 
 <a href="http://127.0.0.1:8080" target="_blank">Acesso rápido</a>
+
+
+<p>esse projeto necessita que o back-end esteja rodando</p>
+<a href="https://github.com/igor-mondoni/processo-back-end"></a>
+  

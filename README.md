@@ -14,10 +14,10 @@
 
 <p/>
 <p>Abra o console após fazer o clone e execute os seguintes comandos:</p>
-### `git clone https://github.com/igor-mondoni/processo-front-end.git`
-### `cd processo-front-end`
-### `npm install`
-### `npx http-server -p 8080`
+### git clone https://github.com/igor-mondoni/processo-front-end.git
+### cd processo-front-end
+### npm install
+### npx http-server -p 8080
 
 <a href="http://127.0.0.1:8080" target="_blank">Acesso rápido</a>
 
